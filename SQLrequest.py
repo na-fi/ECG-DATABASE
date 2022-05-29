@@ -3,7 +3,7 @@ import mysql.connector
 from datetime import datetime
 import yaml
 
-COM_PORT = 'COM5'
+COM_PORT = '/dev/ttyACM1'
 BAUD_RATES = 115200
 
 db = yaml.load(open('db.yaml'), Loader=yaml.FullLoader)

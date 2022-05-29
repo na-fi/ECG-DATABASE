@@ -1,6 +1,9 @@
+pathlib
+mysqlclient
+mysql-connector-python
+pymysql
 pyserial
 flask
-pyyaml
 Flask-MySQLdb
 mysql-connector
 DateTime
