@@ -1,0 +1,7 @@
+pyserial
+flask
+pyyaml
+Flask-MySQLdb
+mysql-connector
+DateTime
+datetime

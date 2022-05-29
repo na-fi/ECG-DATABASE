@@ -1,0 +1,4 @@
+mysql_host: 'visionaries-database.cu7to0qeeyyj.us-east-1.rds.amazonaws.com'
+mysql_user: 'admin'
+mysql_password: 'abc12345'
+mysql_db: 'VISIONARIES'

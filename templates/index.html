@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/template.css') }}">
+</head>
+
+<body>
+    <div id="container">
+
+        <table border=1>
+            <tr>
+                <td align="center"> ID </td>
+                <td align="center"> NAME </td>
+                <td align="center"> COVID </td>
+                <td align="center"> TIME </td>
+            </tr>
+            {% for people in data %}
+            <tr>
+                <td align="center"> {{people[0]}}</td>
+                <td align="center"> {{people[1]}}</td>
+                <td align="center"> {{people[2]}}</td>
+                <td align="center"> {{people[3]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+</body>
