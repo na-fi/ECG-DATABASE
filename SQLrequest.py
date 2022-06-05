@@ -34,7 +34,7 @@ def clear():
 # fetch all data in tb
 def seeall():
     cursor.execute(
-        "Select people.ID, people.NAME, tb.COVID, tb.TIME, tb.LOCATION from people,tb Where people.ID = tb.ID")
+        "Select people.ID, people.NAME, tb.COVID, tb.TIME, tb.LOCATION from tb, people Where tb.ID=people.ID ORDER BY tb.TIME")
     for x in cursor:
         print(x)
 
