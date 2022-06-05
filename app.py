@@ -17,7 +17,7 @@ mysql = MySQL(app)
 def home():
     cur = mysql.connection.cursor()
     result = cur.execute(
-        "Select people.ID, people.NAME, tb.COVID, tb.TIME from people,tb Where people.ID = tb.ID")
+        "Select people.ID, people.NAME, tb.COVID, tb.TIME, tb.LOCATION from people,tb Where people.ID = tb.ID")
     if result > 0:
         data = cur.fetchall()
         return render_template('index.html', data=data)

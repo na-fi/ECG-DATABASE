@@ -3,8 +3,12 @@ import mysql.connector
 from datetime import datetime
 import yaml
 
+
+# =======parameter========
 COM_PORT = '/dev/ttyACM1'
 BAUD_RATES = 115200
+LOCATION = 'RPi_1_location'
+# ========================
 
 db = yaml.load(open('db.yaml'), Loader=yaml.FullLoader)
 
@@ -18,9 +22,9 @@ mysql_connection = mysql.connector.connect(
 cursor = mysql_connection.cursor()
 
 # push a new data
-def push(id, covid, time):
+def push(id, covid, time, location):
     cursor.execute(
-        'INSERT INTO tb(ID, COVID, TIME) VALUES (%s, %s, %s)', (id, covid, time))
+        'INSERT INTO tb(ID, COVID, TIME, LOCATION) VALUES (%s, %s, %s, %s)', (id, covid, time, location))
     mysql_connection.commit()
 
 # clear table
@@ -30,7 +34,7 @@ def clear():
 # fetch all data in tb
 def seeall():
     cursor.execute(
-        "Select people.ID, people.NAME, tb.COVID, tb.TIME from people,tb Where people.ID = tb.ID")
+        "Select people.ID, people.NAME, tb.COVID, tb.TIME, tb.LOCATION from people,tb Where people.ID = tb.ID")
     for x in cursor:
         print(x)
 
@@ -41,18 +45,13 @@ def delete():
 # create table
 def create():
     cursor.execute(
-        "CREATE TABLE tb (ID int NOT NULL, COVID enum('T', 'F') NOT NULL, TIME datetime NOT NULL)")
+        "CREATE TABLE tb (ID int NOT NULL, COVID enum('T', 'F'), TIME datetime NOT NULL, LOCATION varchar(255) NOT NULL)")
 
-
-# push(1, 'F', datetime.now())
-# push(4, 'T', datetime.now())
-# push(32, 'F', datetime.now())
-# push('7', 'T', datetime.now())
 
 
 def process(data):
     str2 = data.split()
-    push(str2[0], str2[1], datetime.now())
+    push(str2[0], str2[1], datetime.now(), LOCATION)
 
 
 ser = serial.Serial(COM_PORT, BAUD_RATES)
