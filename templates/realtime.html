@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/template.css') }}">
+</head>
+
+<body>
+    <script>
+        function timedRefresh(timeoutPeriod) {
+                setTimeout("location.reload(true);", timeoutPeriod);
+        }
+        window.onload = timedRefresh(1000);
+    </script>
+
+    <div id="container">
+            
+        {% if data[0][2] == 'T' %}
+        <h1>ID: {{data[0][0]}}</h1>
+        <h1>姓名: {{data[0][1]}}</h1>
+        <h1>COVID-19高風險群，請進行快篩</h1>
+        {% else %}
+        <h1>ID: {{data[0][0]}}</h1>
+        <h1>姓名: {{data[0][1]}}</h1>
+        <h1>無COVID-19風險</h1>
+        {% endif %}
+
+    </div>
+</body>

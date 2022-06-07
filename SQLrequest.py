@@ -48,7 +48,6 @@ def create():
         "CREATE TABLE tb (ID int NOT NULL, COVID enum('T', 'F'), TIME datetime NOT NULL, LOCATION varchar(255) NOT NULL)")
 
 
-
 def process(data):
     str2 = data.split()
     push(str2[0], str2[1], datetime.now(), LOCATION)

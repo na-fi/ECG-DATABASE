@@ -23,5 +23,15 @@ def home():
         return render_template('index.html', data=data)
 
 
+@app.route('/realtime')
+def new():
+    cur = mysql.connection.cursor()
+    result = cur.execute(
+        "Select people.ID, people.NAME, tb.COVID, tb.TIME, tb.LOCATION from tb, people Where tb.ID=people.ID ORDER BY tb.TIME desc limit 1")
+    if result > 0:
+        data = cur.fetchall()
+        return render_template('realtime.html', data=data)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

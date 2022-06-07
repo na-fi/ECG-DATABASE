@@ -10,3 +10,9 @@ body {
     margin: 0 auto;
     background-color: #F3F3F3;
 }
+
+h1{
+    font-size: 40px;
+    font-weight: bold;
+    color:black;
+}
