@@ -2,6 +2,8 @@ import serial
 import mysql.connector
 from datetime import datetime
 import yaml
+import time
+
 
 
 # =======parameter========
@@ -51,6 +53,17 @@ def create():
 def process(data):
     str2 = data.split()
     push(str2[0], str2[1], datetime.now(), LOCATION)
+
+
+# push(48, 'T', datetime.now(), LOCATION)
+# time.sleep(1)
+# push(2, 'F', datetime.now(), LOCATION)
+# time.sleep(1)
+# push(43, 'T', datetime.now(), LOCATION)
+# time.sleep(1)
+# push(5, 'T', datetime.now(), LOCATION)
+
+# exit()
 
 
 ser = serial.Serial(COM_PORT, BAUD_RATES)
