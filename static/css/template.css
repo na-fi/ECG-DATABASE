@@ -1,27 +1,18 @@
- div#container {
+div#container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-/*     align-items: center; */
-    height: 120%;
-    width: 100vw;
+    align-items: center;
+    height: 66vh;
 }
 
-
 body {
-    padding: 5vh 0 5vh 0;
-    margin: 0 auto 0 auto;
+    margin: 0 auto;
     background-color: #F3F3F3;
-/*     height: 90vh; */
 }
 
 h1{
     font-size: 40px;
     font-weight: bold;
     color:black;
-}
-
-
-html{
-    height:120%;
-    width:100vw;
 }
