@@ -20,6 +20,9 @@ h1{
     color:black;
 }
 
+table {
+    width: 600px;
+}
 
 html{
     height:120%;
