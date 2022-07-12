@@ -6,6 +6,11 @@ div#container {
     height: 66vh;
 }
 
+h1#warning {
+    color: red;
+    font-weight: bold;
+}
+
 body {
     margin: 0 auto;
     background-color: #F3F3F3;

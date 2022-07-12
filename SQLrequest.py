@@ -4,8 +4,6 @@ from datetime import datetime
 import yaml
 import time
 
-
-
 # =======parameter========
 COM_PORT = '/dev/ttyACM1'
 BAUD_RATES = 115200
@@ -51,9 +49,14 @@ def create():
 
 
 def process(data):
-    str2 = data.split()
-    push(str2[0], str2[1], datetime.now(), LOCATION)
-
+    try:
+        str2 = data.split()
+        push(str2[0], str2[1], datetime.now(), LOCATION)
+    except:
+        pass
+        
+# process("")
+# exit()
 
 # push(48, 'T', datetime.now(), LOCATION)
 # time.sleep(1)
@@ -63,17 +66,20 @@ def process(data):
 # time.sleep(1)
 # push(5, 'T', datetime.now(), LOCATION)
 
-# exit()
+
+cursor.execute("UPDATE people SET NAME='CHEN-AN LIN' WHERE ID=42")
+mysql_connection.commit()
+exit()
 
 
 ser = serial.Serial(COM_PORT, BAUD_RATES)
 try:
     while True:
-        while ser.in_waiting:
-            data_raw = ser.readline()
-            data = data_raw.decode()
-            print('get data: ', data)
-            process(data)
+        received_data = ser.read()  # read serial port
+        time.sleep(0.03)
+        data_left = ser.inWaiting()  # check for remaining byte
+        received_data += ser.read(data_left)
+        process(received_data)
 
 except KeyboardInterrupt:
     ser.close()
